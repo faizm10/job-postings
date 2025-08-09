@@ -53,11 +53,39 @@ export const COMPANIES: JobListing[] = [
   { companyName: 'ManuLife', link: 'https://careers.manulife.com/global/en' },
   { companyName: 'Toyota', link: 'https://toyotamotorjobs.tmmc.ca/x/openings' },
   { companyName: 'assetflo', link: 'https://assetflo.com/assetflo_careers' },
-  { companyName: 'PointClickCare', link: 'https://jobs.lever.co/pointclickcare/' },
+  {
+    companyName: 'PointClickCare',
+    link: 'https://jobs.lever.co/pointclickcare/',
+  },
   { companyName: 'cohore', link: 'https://jobs.ashbyhq.com/cohere' },
   { companyName: 'super.com', link: 'https://jobs.lever.co/super-com' },
   { companyName: '1Password', link: 'https://jobs.ashbyhq.com/1password' },
   { companyName: 'Waabi', link: 'https://jobs.lever.co/waabi' },
-  { companyName: 'Square', link: 'https://block.xyz/careers/jobs?teams[]=Information%20Technology&teams[]=Software%20Engineering' },
+  {
+    companyName: 'Square',
+    link: 'https://block.xyz/careers/jobs?teams[]=Information%20Technology&teams[]=Software%20Engineering',
+  },
   { companyName: 'EQ Bank', link: 'https://jobs.lever.co/eqbank' },
+  {
+    companyName: 'Bell',
+    link: 'https://jobs.bell.ca/ca/en/c/students-graduates-jobs',
+  },
+  {
+    companyName: 'Artic Wolf',
+    link: 'https://arcticwolf.wd1.myworkdayjobs.com/External?locations=f6cfbd603ca11001f6242e0b41250000&locations=f6cfbd603ca11001f6248a5f81c80000',
+  },
+  {
+    companyName: 'Intact',
+    link: 'https://careers.intactfc.com/jobs?filter%5Bcategory%5D%5B0%5D=Technology',
+  },
+  { companyName: 'Blue J', link: 'https://jobs.gem.com/blue-j' },
+  { companyName: 'Lyft', link: 'https://www.lyft.com/careers#openings' },
+  {
+    companyName: 'Folio Tech',
+    link: 'https://foliotech.zohorecruit.com/jobs/Careers',
+  },
+  { companyName: 'Coursera', link: 'https://careers.coursera.com/jobs/search?page=1&query=&country_codes%5B%5D=CA' },
+  { companyName: 'coming soon', link: '' },
+  { companyName: 'coming soon', link: '' },
+  { companyName: 'coming soon', link: '' },
 ];
