@@ -1,0 +1,24 @@
+<h2>job listings</h2>
+
+<form (ngSubmit)="addCompany()" #form="ngForm" style="margin-bottom: 1rem; display: flex; gap: .5rem; align-items: end; flex-wrap: wrap;">
+  <label>
+    <div>company name</div>
+    <input name="companyName" [(ngModel)]="newCompanyName" placeholder="StackAdapt" required />
+  </label>
+  <label>
+    <div>link</div>
+    <input name="companyLink" [(ngModel)]="newCompanyLink" placeholder="https://..." required />
+  </label>
+  <button type="submit">add</button>
+</form>
+
+<ul>
+  @for (job of jobListings; track job.companyName) {
+    <li>
+      <a [href]="job.link" target="_blank" rel="noopener">{{ job.companyName }}</a>
+    </li>
+  }
+  @empty {
+    <li>no companies yet</li>
+  }
+</ul>
