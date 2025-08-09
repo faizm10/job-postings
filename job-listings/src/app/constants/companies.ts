@@ -59,4 +59,5 @@ export const COMPANIES: JobListing[] = [
   { companyName: '1Password', link: 'https://jobs.ashbyhq.com/1password' },
   { companyName: 'Waabi', link: 'https://jobs.lever.co/waabi' },
   { companyName: 'Square', link: 'https://block.xyz/careers/jobs?teams[]=Information%20Technology&teams[]=Software%20Engineering' },
+  { companyName: 'EQ Bank', link: 'https://jobs.lever.co/eqbank' },
 ];
