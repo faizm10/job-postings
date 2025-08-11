@@ -16,6 +16,14 @@ export class JobsComponent {
   newCompanyName = '';
   newCompanyLink = '';
 
+  get activeJobsCount(): number {
+    return this.jobListings.filter(job => job.link).length;
+  }
+
+  get comingSoonCount(): number {
+    return this.jobListings.filter(job => !job.link).length;
+  }
+
   addCompany(): void {
     const name = this.newCompanyName.trim();
     const link = this.newCompanyLink.trim();
