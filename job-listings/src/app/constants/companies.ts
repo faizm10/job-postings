@@ -84,11 +84,26 @@ export const COMPANIES: JobListing[] = [
     companyName: 'Folio Tech',
     link: 'https://foliotech.zohorecruit.com/jobs/Careers',
   },
-  { companyName: 'Coursera', link: 'https://careers.coursera.com/jobs/search?page=1&query=&country_codes%5B%5D=CA' },
+  {
+    companyName: 'Coursera',
+    link: 'https://careers.coursera.com/jobs/search?page=1&query=&country_codes%5B%5D=CA',
+  },
   { companyName: 'BetterStack', link: 'https://betterstack.com/careers' },
-  { companyName: 'Citi', link: 'https://jobs.citi.com/search-jobs/Canada/287/2/6251999/60x10867/-113x64258/50/2' },
+  {
+    companyName: 'Citi',
+    link: 'https://jobs.citi.com/search-jobs/Canada/287/2/6251999/60x10867/-113x64258/50/2',
+  },
   { companyName: 'Meta', link: 'https://www.metacareers.com/jobs' },
-  { companyName: 'AutoTrader', link: 'https://careers.trader.ca/opportunities/?search=canada#nav-digital' },
+  {
+    companyName: 'AutoTrader',
+    link: 'https://careers.trader.ca/opportunities/?search=canada#nav-digital',
+  },
   { companyName: 'X', link: 'https://careers.x.com/en#positions' },
-  { companyName: 'OpenText', link: 'https://careers.opentext.com/us/en/search-results?p=ChIJ2WrMN9MDDUsRpY9Doiq3aJk&location=Canada' },
+  {
+    companyName: 'OpenText',
+    link: 'https://careers.opentext.com/us/en/search-results?p=ChIJ2WrMN9MDDUsRpY9Doiq3aJk&location=Canada',
+  },
+  { companyName: 'Ericsson', link: 'https://jobs.ericsson.com/careers?query=engineering&start=0&location=canada&pid=563121765310543&sort_by=solr&filter_include_remote=1' },
+  { companyName: 'Uber', link: 'https://www.uber.com/us/en/careers/list/?department=Engineering' },
+  
 ];
