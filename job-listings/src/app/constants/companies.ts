@@ -115,4 +115,10 @@ export const COMPANIES: JobListing[] = [
     companyName: 'Bombardier',
     link: 'https://jobs.bombardier.com/search/?createNewAlert=false&q=&locationsearch=canada',
   },
+  {
+    companyName: 'Clutch',
+    link: 'https://www.clutch.ca/careers/apply',
+  },
+  { companyName: 'Lazer Technology', link: 'https://www.lazertechnologies.com/careers' },
+  { companyName: 'integrate.ai', link: 'https://www.integrate.ai/careers' },
 ];
