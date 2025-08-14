@@ -103,7 +103,16 @@ export const COMPANIES: JobListing[] = [
     companyName: 'OpenText',
     link: 'https://careers.opentext.com/us/en/search-results?p=ChIJ2WrMN9MDDUsRpY9Doiq3aJk&location=Canada',
   },
-  { companyName: 'Ericsson', link: 'https://jobs.ericsson.com/careers?query=engineering&start=0&location=canada&pid=563121765310543&sort_by=solr&filter_include_remote=1' },
-  { companyName: 'Uber', link: 'https://www.uber.com/us/en/careers/list/?department=Engineering' },
-  
+  {
+    companyName: 'Ericsson',
+    link: 'https://jobs.ericsson.com/careers?query=engineering&start=0&location=canada&pid=563121765310543&sort_by=solr&filter_include_remote=1',
+  },
+  {
+    companyName: 'Uber',
+    link: 'https://www.uber.com/us/en/careers/list/?department=Engineering',
+  },
+  {
+    companyName: 'Bombardier',
+    link: 'https://jobs.bombardier.com/search/?createNewAlert=false&q=&locationsearch=canada',
+  },
 ];
