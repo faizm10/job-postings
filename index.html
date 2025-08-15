@@ -91,8 +91,42 @@
       font-weight: 600;
     }
 
+    .sections {
+      margin-top: 32px;
+      display: grid;
+      gap: 32px;
+    }
+
+    .section {
+      display: grid;
+      gap: 16px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section-count {
+      padding: 4px 8px;
+      background: rgba(74,163,255,.1);
+      border: 1px solid rgba(74,163,255,.2);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
     .grid {
-      margin-top: 18px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 14px;
@@ -171,6 +205,10 @@
       vertical-align: middle;
     }
 
+    .hidden {
+      display: none;
+    }
+
     @media (hover: none) {
       .card:hover { transform: none; }
     }
@@ -194,67 +232,84 @@
     </header>
 
     <main>
-      <section id="grid" class="grid" aria-live="polite"></section>
+      <div id="sections" class="sections" aria-live="polite"></div>
     </main>
 
     <footer>
-      Pro tip: Command/Ctrl + K to focus search, Enter to open the first result.
+      Faiz M | 2025
     </footer>
   </div>
 
   <script>
-    // Your data
+    // Your data with categories
     const COMPANIES = [
-      { companyName: 'StackAdapt', link: 'https://jobs.lever.co/stackadapt' },
-      { companyName: 'QuestTrade', link: 'https://jobs.dayforcehcm.com/en-US/qfg/CANDIDATEPORTAL' },
-      { companyName: 'CI Financial', link: 'https://careers.cifinancial.com/search/jobs' },
-      { companyName: 'Deloitte', link: 'https://deloittecm.avature.net/en_US/careers/SearchJobs' },
-      { companyName: 'RBC', link: 'https://jobs.rbc.com/ca/en/search-results' },
-      { companyName: 'Faire', link: 'https://www.faire.com/careers/openings' },
-      { companyName: 'TD', link: 'https://jobs.td.com/en/search-results' },
-      { companyName: 'Scotiabank', link: 'https://jobs.scotiabank.com/en/search-results' },
-      { companyName: 'ETHGlobal', link: 'https://jobs.ashbyhq.com/ethglobal' },
-      { companyName: 'WealthSimple', link: 'https://jobs.lever.co/wealthsimple' },
-      { companyName: 'Relay', link: 'https://jobs.ashbyhq.com/relayfi' },
-      { companyName: 'Rippling', link: 'https://www.rippling.com/careers/open-roles' },
-      { companyName: 'Stripe', link: 'https://stripe.com/jobs/search' },
-      { companyName: 'Sunife', link: 'https://sunlife.wd3.myworkdayjobs.com/Experienced-Jobs?q=software' },
-      { companyName: 'LawBrokr', link: 'https://www.lawbrokr.com/careers' },
-      { companyName: 'Genesys', link: 'https://genesys.wd1.myworkdayjobs.com/Genesys?jobFamilyGroup=0b40e66ca32e1025ac5265e727b00002&jobFamilyGroup=0b40e66ca32e1025ac5250e97bd80000&locationCountry=a30a87ed25634629aa6c3958aa2b91ea' },
-      { companyName: 'Capital One', link: 'https://www.capitalonecareers.com/category/engineering-jobs/234/29016/1' },
-      { companyName: 'CIBC', link: 'https://cibc.wd3.myworkdayjobs.com/search?q=%27digital+OR+technology%27&Country=a30a87ed25634629aa6c3958aa2b91ea&jobFamilyGroup=4bbe6c74e8a7011e314d36a881013310&jobFamilyGroup=4bbe6c74e8a70126f29430a881012510&jobFamilyGroup=4bbe6c74e8a7011c6e1c34a881012d10&jobFamilyGroup=4bbe6c74e8a701e2782e2da881011b10' },
-      { companyName: 'Metrolinx', link: 'https://ehtc.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs' },
-      { companyName: 'ManuLife', link: 'https://careers.manulife.com/global/en' },
-      { companyName: 'Toyota', link: 'https://toyotamotorjobs.tmmc.ca/x/openings' },
-      { companyName: 'assetflo', link: 'https://assetflo.com/assetflo_careers' },
-      { companyName: 'PointClickCare', link: 'https://jobs.lever.co/pointclickcare/' },
-      { companyName: 'cohore', link: 'https://jobs.ashbyhq.com/cohere' },
-      { companyName: 'super.com', link: 'https://jobs.lever.co/super-com' },
-      { companyName: '1Password', link: 'https://jobs.ashbyhq.com/1password' },
-      { companyName: 'Waabi', link: 'https://jobs.lever.co/waabi' },
-      { companyName: 'Square', link: 'https://block.xyz/careers/jobs?teams[]=Information%20Technology&teams[]=Software%20Engineering' },
-      { companyName: 'EQ Bank', link: 'https://jobs.lever.co/eqbank' },
-      { companyName: 'Bell', link: 'https://jobs.bell.ca/ca/en/c/students-graduates-jobs' },
-      { companyName: 'Artic Wolf', link: 'https://arcticwolf.wd1.myworkdayjobs.com/External?locations=f6cfbd603ca11001f6242e0b41250000&locations=f6cfbd603ca11001f6248a5f81c80000' },
-      { companyName: 'Intact', link: 'https://careers.intactfc.com/jobs?filter%5Bcategory%5D%5B0%5D=Technology' },
-      { companyName: 'Blue J', link: 'https://jobs.gem.com/blue-j' },
-      { companyName: 'Lyft', link: 'https://www.lyft.com/careers#openings' },
-      { companyName: 'Folio Tech', link: 'https://foliotech.zohorecruit.com/jobs/Careers' },
-      { companyName: 'Coursera', link: 'https://careers.coursera.com/jobs/search?page=1&query=&country_codes%5B%5D=CA' },
-      { companyName: 'BetterStack', link: 'https://betterstack.com/careers' },
-      { companyName: 'Citi', link: 'https://jobs.citi.com/search-jobs/Canada/287/2/6251999/60x10867/-113x64258/50/2' },
-      { companyName: 'Meta', link: 'https://www.metacareers.com/jobs' },
-      { companyName: 'AutoTrader', link: 'https://careers.trader.ca/opportunities/?search=canada#nav-digital' },
-      { companyName: 'X', link: 'https://careers.x.com/en#positions' },
-      { companyName: 'OpenText', link: 'https://careers.opentext.com/us/en/search-results?p=ChIJ2WrMN9MDDUsRpY9Doiq3aJk&location=Canada' },
-      { companyName: 'Ericsson', link: 'https://jobs.ericsson.com/careers?query=engineering&start=0&location=canada&pid=563121765310543&sort_by=solr&filter_include_remote=1' },
-      { companyName: 'Uber', link: 'https://www.uber.com/us/en/careers/list/?department=Engineering' },
-      { companyName: 'Bombardier', link: 'https://jobs.bombardier.com/search/?createNewAlert=false&q=&locationsearch=canada' },
-      { companyName: 'Clutch', link: 'https://www.clutch.ca/careers/apply' },
-      { companyName: 'Lazer Technology', link: 'https://www.lazertechnologies.com/careers' },
-      { companyName: 'integrate.ai', link: 'https://www.integrate.ai/careers' },
-      { companyName: 'Tesla', link: 'https://www.tesla.com/careers/search/?site=CA&department=engineering-information-technology' },
-      { companyName: 'Ontario Teachers Pension Plan', link: 'https://otppb.wd3.myworkdayjobs.com/OntarioTeachers_Careers?JobAreas=1d3992493f53018f7d0460bcd833528d' },
+      // Banks
+      { companyName: 'RBC', link: 'https://jobs.rbc.com/ca/en/search-results', category: 'Banks' },
+      { companyName: 'TD', link: 'https://jobs.td.com/en/search-results', category: 'Banks' },
+      { companyName: 'Scotiabank', link: 'https://jobs.scotiabank.com/en/search-results', category: 'Banks' },
+      { companyName: 'CIBC', link: 'https://cibc.wd3.myworkdayjobs.com/search?q=%27digital+OR+technology%27&Country=a30a87ed25634629aa6c3958aa2b91ea&jobFamilyGroup=4bbe6c74e8a7011e314d36a881013310&jobFamilyGroup=4bbe6c74e8a70126f29430a881012510&jobFamilyGroup=4bbe6c74e8a7011c6e1c34a881012d10&jobFamilyGroup=4bbe6c74e8a701e2782e2da881011b10', category: 'Banks' },
+      { companyName: 'Citi', link: 'https://jobs.citi.com/search-jobs/Canada/287/2/6251999/60x10867/-113x64258/50/2', category: 'Banks' },
+      { companyName: 'CI Financial', link: 'https://careers.cifinancial.com/search/jobs', category: 'Other' },
+      { companyName: 'Capital One', link: 'https://www.capitalonecareers.com/category/engineering-jobs/234/29016/1', category: 'Banks' },
+      { companyName: 'EQ Bank', link: 'https://jobs.lever.co/eqbank', category: 'Banks' },
+      // Big Tech
+      { companyName: 'Meta', link: 'https://www.metacareers.com/jobs', category: 'Big Tech' },
+      { companyName: 'X', link: 'https://careers.x.com/en#positions', category: 'Big Tech' },
+      { companyName: 'Uber', link: 'https://www.uber.com/us/en/careers/list/?department=Engineering', category: 'Big Tech' },
+      { companyName: 'Tesla', link: 'https://www.tesla.com/careers/search/?site=CA&department=engineering-information-technology', category: 'Big Tech' },
+      { companyName: 'Stripe', link: 'https://stripe.com/jobs/search', category: 'Big Tech' },
+      { companyName: 'Lyft', link: 'https://www.lyft.com/careers#openings', category: 'Big Tech' },
+      { companyName: 'OpenText', link: 'https://careers.opentext.com/us/en/search-results?p=ChIJ2WrMN9MDDUsRpY9Doiq3aJk&location=Canada', category: 'Big Tech' },
+      { companyName: 'Ericsson', link: 'https://jobs.ericsson.com/careers?query=engineering&start=0&location=canada&pid=563121765310543&sort_by=solr&filter_include_remote=1', category: 'Big Tech' },
+
+      // StartUps
+      { companyName: 'StackAdapt', link: 'https://jobs.lever.co/stackadapt', category: 'StartUps' },
+      { companyName: 'QuestTrade', link: 'https://jobs.dayforcehcm.com/en-US/qfg/CANDIDATEPORTAL', category: 'StartUps' },
+      { companyName: 'WealthSimple', link: 'https://jobs.lever.co/wealthsimple', category: 'StartUps' },
+      { companyName: 'Relay', link: 'https://jobs.ashbyhq.com/relayfi', category: 'StartUps' },
+      { companyName: 'cohore', link: 'https://jobs.ashbyhq.com/cohere', category: 'StartUps' },
+      { companyName: 'super.com', link: 'https://jobs.lever.co/super-com', category: 'StartUps' },
+      { companyName: '1Password', link: 'https://jobs.ashbyhq.com/1password', category: 'StartUps' },
+      { companyName: 'Waabi', link: 'https://jobs.lever.co/waabi', category: 'StartUps' },
+      { companyName: 'BetterStack', link: 'https://betterstack.com/careers', category: 'StartUps' },
+      { companyName: 'integrate.ai', link: 'https://www.integrate.ai/careers', category: 'StartUps' },
+      { companyName: 'Artic Wolf', link: 'https://arcticwolf.wd1.myworkdayjobs.com/External?locations=f6cfbd603ca11001f6242e0b41250000&locations=f6cfbd603ca11001f6248a5f81c80000', category: 'StartUps' },
+      { companyName: 'Blue J', link: 'https://jobs.gem.com/blue-j', category: 'StartUps' },
+      { companyName: 'Folio Tech', link: 'https://foliotech.zohorecruit.com/jobs/Careers', category: 'StartUps' },
+      { companyName: 'Clutch', link: 'https://www.clutch.ca/careers/apply', category: 'StartUps' },
+      { companyName: 'Lazer Technology', link: 'https://www.lazertechnologies.com/careers', category: 'StartUps' },
+      { companyName: 'assetflo', link: 'https://assetflo.com/assetflo_careers', category: 'StartUps' },
+      
+      { companyName: 'ETHGlobal', link: 'https://jobs.ashbyhq.com/ethglobal', category: 'StartUps' },
+
+      // Insurance
+      { companyName: 'ManuLife', link: 'https://careers.manulife.com/global/en', category: 'Insurance' },
+      { companyName: 'Sunife', link: 'https://sunlife.wd3.myworkdayjobs.com/Experienced-Jobs?q=software', category: 'Insurance' },
+      { companyName: 'Intact', link: 'https://careers.intactfc.com/jobs?filter%5Bcategory%5D%5B0%5D=Technology', category: 'Insurance' },
+
+      // Consulting
+      { companyName: 'Deloitte', link: 'https://deloittecm.avature.net/en_US/careers/SearchJobs', category: 'Consulting' },
+      { companyName: 'LawBrokr', link: 'https://www.lawbrokr.com/careers', category: 'Consulting' },
+      // Automotive
+      { companyName: 'Toyota', link: 'https://toyotamotorjobs.tmmc.ca/x/openings', category: 'Automotive' },
+
+      // Telecommunications
+      { companyName: 'Bell', link: 'https://jobs.bell.ca/ca/en/c/students-graduates-jobs', category: 'Telecommunications' },
+
+      // E-commerce
+      { companyName: 'Faire', link: 'https://www.faire.com/careers/openings', category: 'E-commerce' },
+      { companyName: 'Rippling', link: 'https://www.rippling.com/careers/open-roles', category: 'E-commerce' },
+      { companyName: 'Square', link: 'https://block.xyz/careers/jobs?teams[]=Information%20Technology&teams[]=Software%20Engineering', category: 'E-commerce' },
+      { companyName: 'AutoTrader', link: 'https://careers.trader.ca/opportunities/?search=canada#nav-digital', category: 'E-commerce' },
+      { companyName: 'Coursera', link: 'https://careers.coursera.com/jobs/search?page=1&query=&country_codes%5B%5D=CA', category: 'E-commerce' },
+
+      // Other
+      
+      { companyName: 'Ontario Teachers Pension Plan', link: 'https://otppb.wd3.myworkdayjobs.com/OntarioTeachers_Careers?JobAreas=1d3992493f53018f7d0460bcd833528d', category: 'Other' },
+      { companyName: 'PointClickCare', link: 'https://jobs.lever.co/pointclickcare/', category: 'Other' },
+      { companyName: 'Metrolinx', link: 'https://ehtc.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs', category: 'Other' },
+      { companyName: 'Bombardier', link: 'https://jobs.bombardier.com/search/?createNewAlert=false&q=&locationsearch=canada', category: 'Other' },
+      { companyName: 'Genesys', link: 'https://genesys.wd1.myworkdayjobs.com/Genesys?jobFamilyGroup=0b40e66ca32e1025ac5265e727b00002&jobFamilyGroup=0b40e66ca32e1025ac5250e97bd80000&locationCountry=a30a87ed25634629aa6c3958aa2b91ea', category: 'Other' },
     ];
 
     // Utility: normalize names (simple fix for small typos like Sunife -> Sun Life)
@@ -265,20 +320,52 @@
       } catch { return url; }
     };
 
-    const grid = document.getElementById('grid');
+    const sections = document.getElementById('sections');
     const count = document.getElementById('count');
     const search = document.getElementById('search');
 
+    // Group companies by category
+    const groupByCategory = (companies) => {
+      const groups = {};
+      companies.forEach(company => {
+        const category = company.category || 'Other';
+        if (!groups[category]) {
+          groups[category] = [];
+        }
+        groups[category].push(company);
+      });
+      return groups;
+    };
+
+    // Sort categories by number of companies (descending)
+    const sortCategories = (groups) => {
+      return Object.entries(groups).sort(([,a], [,b]) => b.length - a.length);
+    };
+
     const render = (items) => {
-      grid.innerHTML = items.map(({ companyName, link }) => `
-        <article class="card">
-          <a href="${link}" target="_blank" rel="noopener noreferrer" title="Open ${companyName} careers">
-            <div class="company">${companyName}</div>
-            <div class="url">${prettyUrl(link)}</div>
-            <span class="open">Open careers ↗</span>
-          </a>
-        </article>
+      const groups = groupByCategory(items);
+      const sortedCategories = sortCategories(groups);
+      
+      sections.innerHTML = sortedCategories.map(([category, companies]) => `
+        <section class="section">
+          <div class="section-header">
+            <h2 class="section-title">${category}</h2>
+            <span class="section-count">${companies.length}</span>
+          </div>
+          <div class="grid">
+            ${companies.map(({ companyName, link }) => `
+              <article class="card">
+                <a href="${link}" target="_blank" rel="noopener noreferrer" title="Open ${companyName} careers">
+                  <div class="company">${companyName}</div>
+                  <div class="url">${prettyUrl(link)}</div>
+                  <span class="open">Open careers ↗</span>
+                </a>
+              </article>
+            `).join('')}
+          </div>
+        </section>
       `).join('');
+      
       count.textContent = `${items.length} compan${items.length === 1 ? 'y' : 'ies'}`;
     };
 
@@ -292,8 +379,10 @@
     const filter = (q) => {
       const term = q.trim().toLowerCase();
       if (!term) return render(byName);
-      const filtered = byName.filter(({ companyName, link }) =>
-        companyName.toLowerCase().includes(term) || link.toLowerCase().includes(term)
+      const filtered = byName.filter(({ companyName, link, category }) =>
+        companyName.toLowerCase().includes(term) || 
+        link.toLowerCase().includes(term) ||
+        category.toLowerCase().includes(term)
       );
       render(filtered);
     };
@@ -308,7 +397,7 @@
         search.select();
       }
       if (e.key === 'Enter' && document.activeElement === search) {
-        const first = grid.querySelector('.card a');
+        const first = sections.querySelector('.card a');
         if (first) first.click();
       }
     });
